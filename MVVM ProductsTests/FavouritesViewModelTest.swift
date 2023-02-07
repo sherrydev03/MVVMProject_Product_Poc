@@ -26,7 +26,7 @@ final class FavouritesViewModelTest: XCTestCase {
 		
 		// Decode JSON
 		let productList = try decoder.decode(ProductList.self, from: data)
-		productsViewModel = ProductViewModel(products: productList.products)
+		productsViewModel = ProductViewModel(products: productList.products!)
 		randomIndex = Int.random(in: 0..<productsViewModel.products.count)
 		
 		favouritesViewModel = FavouritesViewModel(productsViewModel: productsViewModel)
@@ -45,11 +45,11 @@ final class FavouritesViewModelTest: XCTestCase {
 		
 		let id = productsViewModel.products[randomIndex].id
 		XCTAssertNotNil(productsViewModel.products[randomIndex],"It should be not nill as our index is less than list count")
-		productsViewModel.updateFavorite(whereIdIs: id)
-		XCTAssertEqual(favouritesViewModel.favoriteProducts.count, 1,"There should be one element in favourite products as we added a favorite")
-		XCTAssertEqual(favouritesViewModel.favoriteProducts[0].id, id)
-		favouritesViewModel.updateFavorite(with: id)
-		XCTAssertEqual(favouritesViewModel.favoriteProducts.count, 0,"There should be no data in favourite products as we removed favorite")
+		productsViewModel.updateFavouriteForProducts(whereIdIs: id!)
+		XCTAssertEqual(favouritesViewModel.favouritesProducts.count, 1,"There should be one element in favourite products as we added a favorite")
+		XCTAssertEqual(favouritesViewModel.favouritesProducts[0].id, id)
+		favouritesViewModel.updateFavourite(with: id!)
+		XCTAssertEqual(favouritesViewModel.favouritesProducts.count, 0,"There should be no data in favourite products as we removed favorite")
 	}
 	
 	func test_load_when_favourites_added(){
@@ -57,9 +57,9 @@ final class FavouritesViewModelTest: XCTestCase {
 		
 		let set = Set(randomArray)
 		for index in set {
-			productsViewModel.updateFavorite(whereIdIs: productsViewModel.products[index].id)
+			productsViewModel.updateFavouriteForProducts(whereIdIs: productsViewModel.products[index].id!)
 		}
-		XCTAssertEqual(favouritesViewModel.favoriteProducts.count, set.count)
+		XCTAssertEqual(favouritesViewModel.favouritesProducts.count, set.count)
 	}
 
     override func tearDownWithError() throws {

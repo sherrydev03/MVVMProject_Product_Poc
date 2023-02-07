@@ -26,7 +26,7 @@ final class ProductViewModelTest: XCTestCase {
 		
 		// Decode JSON
 		let productList = try decoder.decode(ProductList.self, from: data)
-		productsViewModel = ProductViewModel(products: productList.products)
+		productsViewModel = ProductViewModel(products: productList.products!)
 		randomIndex = Int.random(in: 0..<productsViewModel.products.count)
 		
     }
@@ -50,16 +50,16 @@ final class ProductViewModelTest: XCTestCase {
 	
 	func test_add_favorite_product() {
 		XCTAssertNotNil(productsViewModel.products[randomIndex],"It should be not nill as our index is less than list count")
-		productsViewModel.products[randomIndex].isFavorite = false
-		productsViewModel.updateFavorite(whereIdIs: productsViewModel.products[randomIndex].id)
-		XCTAssertTrue(productsViewModel.products[randomIndex].isFavorite == true,"Product should be favorite")
+		productsViewModel.products[randomIndex].isFavourite = false
+        productsViewModel.updateFavouriteForProducts(whereIdIs: productsViewModel.products[randomIndex].id!)
+		XCTAssertTrue(productsViewModel.products[randomIndex].isFavourite == true,"Product should be favorite")
 	}
 	
 	func test_remove_favourite() {
 		XCTAssertNotNil(productsViewModel.products[randomIndex],"It should be not nill as our index is less than list count")
-		productsViewModel.products[randomIndex].isFavorite = true
-		productsViewModel.updateFavorite(whereIdIs: productsViewModel.products[randomIndex].id)
-		XCTAssertTrue(productsViewModel.products[randomIndex].isFavorite == false,"Product should be favorite")
+		productsViewModel.products[randomIndex].isFavourite = true
+		productsViewModel.updateFavouriteForProducts(whereIdIs: productsViewModel.products[randomIndex].id!)
+		XCTAssertTrue(productsViewModel.products[randomIndex].isFavourite == false,"Product should be favorite")
 	}
 	
 	func test_load_when_favourites_added(){
@@ -67,7 +67,7 @@ final class ProductViewModelTest: XCTestCase {
 		
 		let set = Set(randomArray)
 		for index in set {
-			productsViewModel.updateFavorite(whereIdIs: productsViewModel.products[index].id)
+			productsViewModel.updateFavouriteForProducts(whereIdIs: productsViewModel.products[index].id!)
 		}
 		XCTAssertEqual(productsViewModel.favoriteProducts().count, set.count)
 	}
