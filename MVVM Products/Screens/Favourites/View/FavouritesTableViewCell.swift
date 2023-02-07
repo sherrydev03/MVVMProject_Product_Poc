@@ -56,5 +56,4 @@ class FavouritesTableViewCell: UITableViewCell {
         favButton.setImage(product.isFavourite ? UIImage(systemName: "heart.fill") :UIImage(systemName: "heart") , for: .normal)
         productImageView.setImage(with: product.imageURL)
     }
-	
 }

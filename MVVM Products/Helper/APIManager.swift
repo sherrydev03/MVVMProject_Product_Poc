@@ -22,7 +22,7 @@ final class APIManager {
     static let shared = APIManager()
     private init() {}
     
-    func request<T: Codable>(
+    func request<T: Decodable>(
         modelType: T.Type,
         type: EndPointType,
         completion: @escaping Handler<T>

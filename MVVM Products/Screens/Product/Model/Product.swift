@@ -10,13 +10,16 @@
 import Foundation
 
 // MARK: - ProductList
-struct ProductList: Codable {
+struct ProductList: Decodable {
     let products: [Product]?
+	enum CodingKeys: String, CodingKey {
+		case products
+	}
 }
 
 // MARK: - Product
-struct Product: Codable {
-    let citrusID: String?
+struct Product: Decodable {
+    let citrusId: String?
     let title, id: String?
     let imageURL: String?
     let price: [Price]?
@@ -32,27 +35,34 @@ struct Product: Codable {
     let saleUnitPrice: Double?
     let totalReviewCount: Int?
     let isDeliveryOnly, isDirectFromSupplier: Bool?
-
     // key added for favourite
 	var isFavourite = false
-
     enum CodingKeys: String, CodingKey {
-        case citrusID = "citrusId"
+        case citrusId = "citrusId"
         case title, id, imageURL, price, brand, badges, ratingCount, messages, isAddToCartEnable, addToCartButtonText, isInTrolley, isInWishlist, isFindMeEnable, saleUnitPrice, totalReviewCount, isDeliveryOnly, isDirectFromSupplier
     }
 }
 
 // MARK: - Messages
-struct Messages: Codable {
+struct Messages: Decodable {
     let secondaryMessage: String?
     let promotionalMessage: String?
+	enum CodingKeys: String, CodingKey {
+		case secondaryMessage
+		case promotionalMessage
+	}
 }
 
 
 // MARK: - Price
-struct Price: Codable {
+struct Price: Decodable {
     let message: String?
     let value: Double?
     let isOfferPrice: Bool?
+	enum CodingKeys: String, CodingKey {
+		case message
+		case value
+		case isOfferPrice
+	}
 }
 

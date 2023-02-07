@@ -20,13 +20,11 @@ class ProductListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
     }
     
     // MARK: -  toggle func for Favorite
@@ -45,9 +43,7 @@ class ProductListViewController: UIViewController {
         self.productTableView.reloadData()
     }
     
-    
 }
-
 
 extension ProductListViewController {
     
@@ -55,14 +51,12 @@ extension ProductListViewController {
         productTableView.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
         observeEvent()
         initViewModel()
-      
     }
 
     func initViewModel() {
         viewModel.fetchProducts()
     }
 
-    
     // MARK: - Data binding event observe karega - communication
     func observeEvent() {
         viewModel.eventHandler = { [weak self] event in
@@ -110,9 +104,7 @@ extension ProductListViewController: UITableViewDataSource , UITableViewDelegate
         return cell
     }
 
-   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         
         let product = viewModel.products[indexPath.row]
         goToDetail(product: product)

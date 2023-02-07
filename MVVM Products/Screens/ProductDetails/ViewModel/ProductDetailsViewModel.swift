@@ -36,7 +36,6 @@ final class ProductDetailsViewModel {
     }
         // MARK: - func updateFavourite with cases
     func updateFavourite (withId id: String) {
-        
         switch detailFor {
         case .favorite:
             product.isFavourite = !product.isFavourite

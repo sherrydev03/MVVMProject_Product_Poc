@@ -20,10 +20,8 @@ let TapToCart =  "Tap on button add to cart"
 let No_Netowrk =  "No Network"
 let No_Products =  "No Products found"
 
-
 struct APIKeys{
-    
+	
 static let firstname =  "first_name"
-
-    
+	
 }

@@ -24,7 +24,6 @@ class FavouritesViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.navigationController?.navigationBar.prefersLargeTitles = true
-		
 	}
     
     // Load tableview nib
@@ -45,7 +44,6 @@ class FavouritesViewController: UIViewController {
 	private func updateTable() {
 		self.FavouritesTable.reloadData()
 	}
-	
 }
 
 // MARK: - UI Tableview Extension
@@ -72,7 +70,6 @@ extension FavouritesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let product = viewModel.favouritesProducts[indexPath.row]
         goToDetail(product: product)
     }

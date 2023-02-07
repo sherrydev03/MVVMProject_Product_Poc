@@ -35,7 +35,6 @@ class ProductCell: UITableViewCell {
         productBackgroundView.layer.cornerRadius = 15
         productImageView.layer.cornerRadius = 10
         self.productBackgroundView.backgroundColor = .systemGray6
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -53,7 +52,6 @@ class ProductCell: UITableViewCell {
         guard let id = product?.id else {return}
         buttonFav?(id)
     }
-    
     
     // MARK: - func productDetailConfiguration
     func productDetailConfiguration() {

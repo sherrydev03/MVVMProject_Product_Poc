@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class productDetailsViewController: UIViewController {
     
     // Variables
@@ -51,7 +50,6 @@ class productDetailsViewController: UIViewController {
         ImgProduct.setImage(with: product.imageURL)
         
     }
-    
     // MARK: - func toggleFavorite
     @IBAction func toggleFavorite(_ sender: UIButton) {
         guard let id = productDetailViewModel?.product.id else {return}

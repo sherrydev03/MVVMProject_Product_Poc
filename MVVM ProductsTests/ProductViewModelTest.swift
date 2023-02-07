@@ -86,5 +86,4 @@ extension XCTestCase {
 		// Use URL to Create Data Object
 		return try! Data(contentsOf: url!)
 	}
-
 }

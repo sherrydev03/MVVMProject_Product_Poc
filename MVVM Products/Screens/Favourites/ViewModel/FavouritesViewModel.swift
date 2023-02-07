@@ -19,7 +19,7 @@ final class FavouritesViewModel {
 		NotificationCenter.default.addObserver(self, selector: #selector(loadFavoriteProducts), name: NotificationNames.favouriteUpdated, object: nil)
 	}
 	
-        // MARK: - func load favourites
+    // MARK: - func load favourites
 	@objc func loadFavoriteProducts() {
 		self.favouritesProducts = productsViewModel.favoriteProducts()
 		self.updateData?()
@@ -28,7 +28,5 @@ final class FavouritesViewModel {
     // MARK: - func updatefavourite Products with id
 	func updateFavourite(with id: String) {
 		productsViewModel.updateFavouriteForProducts(whereIdIs: id)
-        
-     
 	}
 }
